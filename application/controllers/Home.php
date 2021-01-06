@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Home extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,5 +21,26 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('welcome_message');
+	}
+	
+	public function test()
+	{
+		// persiapkan curl
+		$ch = curl_init(); 
+
+		// set url 
+		curl_setopt($ch, CURLOPT_URL, "example.com");
+	
+		// return the transfer as a string 
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	
+		// $output contains the output string 
+		$output = curl_exec($ch); 
+	
+		// tutup curl 
+		curl_close($ch);      
+	
+		// menampilkan hasil curl
+		echo $output;
 	}
 }
