@@ -86,19 +86,19 @@
 
             <li class="nav-header">LABELS</li>
             <li class="nav-item">
-              <a href="<?=base_url()?>responden/otg" class="nav-link">
+              <a href="<?=base_url()?>responden?filter=otg" class="nav-link">
                 <i class="nav-icon far fa-circle text-info"></i>
                 <p>OTG</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?=base_url()?>responden/odp" class="nav-link">
+              <a href="<?=base_url()?>responden?filter=odp" class="nav-link">
                 <i class="nav-icon far fa-circle text-warning"></i>
                 <p>ODP</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?=base_url()?>responden/pdp" class="nav-link">
+              <a href="<?=base_url()?>responden?filter=pdp" class="nav-link">
                 <i class="nav-icon far fa-circle text-danger"></i>
                 <p class="text">PDP</p>
               </a>

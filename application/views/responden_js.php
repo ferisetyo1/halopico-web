@@ -4,9 +4,9 @@
 <script src="<?=base_url('public/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')?>"></script>
 <script type="text/javascript">
     $(function () {
-        $("#example1").DataTable({
+        var datatable=$("#example1").DataTable({
             "responsive": true,
             "autoWidth": false,
-        });
+        }).search("<?=$filter?>").draw();
     });
 </script>

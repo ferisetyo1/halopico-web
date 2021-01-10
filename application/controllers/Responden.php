@@ -4,6 +4,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Responden extends CI_Controller
 {
 
+	public function __construct()
+	{
+		parent::__construct();
+	}
 	/**
 	 * Index Page for this controller.
 	 *
@@ -21,6 +25,8 @@ class Responden extends CI_Controller
 	 */
 	public function index()
 	{
+		$params=$_GET["filter"];
+		$params = $params!=null ? $params : "";
 		$this->load->view('header', array(
 			"active" => 1,
 			"title" => "Responden"
@@ -30,10 +36,15 @@ class Responden extends CI_Controller
 			$user = json_decode($json);
 			$this->load->view('responden', array("user" => $user));
 			$this->load->view('footer');
-			$this->load->view('responden_js');
+			$this->load->view('responden_js', array("filter" => $params));
 		} else {
 			$this->load->view('errors/500');
 			$this->load->view('footer');
 		}
+	}
+
+	public function detail($params)
+	{
+		echo $params;
 	}
 }
