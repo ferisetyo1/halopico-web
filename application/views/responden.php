@@ -1,6 +1,6 @@
 <!-- DataTables -->
-<link rel="stylesheet" href="<?=base_url("public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css")?>">
-<link rel="stylesheet" href="<?=base_url('public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')?>">
+<link rel="stylesheet" href="<?= base_url("public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css") ?>">
+<link rel="stylesheet" href="<?= base_url('public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') ?>">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -34,6 +34,7 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Nama</th>
                                         <th>Username</th>
                                         <th>No. Hp</th>
@@ -41,25 +42,26 @@
                                         <th>Gejala Covid-19</th>
                                         <th>Kondisi Psikologis</th>
                                         <th>Kota</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($variable as $key => $value) {?>
-                                    <tr>
-                                        <td>{{this.nama}}</td>
-                                        <td>{{this.userName}} </td>
-                                        <td>{{this.nohp}}</td>
-                                        <td>{{this.pekerjaan}}</td>
-                                        <td>{{this.selfReportCovidHasil}}</td>
-                                        <td>{{this.kondisiPsikologis}}</td>
-                                        <td>{{this.kota}}</td>
-                                        <td><button type="button" class="btn btn-block bg-gradient-warning btn-sm">Lihat</button></td>
-                                    </tr>
+                                    <?php $i = 1;
+                                    foreach ($user as $key => $value) { ?>
+                                        <tr>
+                                            <td><?= $i++ ?></td>
+                                            <td><a href="<?=base_url('responden/detail/').$value->userName?>"><?= ucwords($value->nama) ?></a></td>
+                                            <td><?= $value->userName ?></td>
+                                            <td><?= $value->nohp ?></td>
+                                            <td><?= ucwords($value->pekerjaan) ?></td>
+                                            <td><?= isset($value->selfReportCovidHasil) ? ($value->selfReportCovidHasil != null ? ucwords($value->selfReportCovidHasil) : 'Belum test') : 'Belum test' ?></td>
+                                            <td><?= isset($value->kondisiPsikologis) ? ($value->kondisiPsikologis != null ? ucwords($value->kondisiPsikologis) : 'Belum test') : 'Belum test' ?></td>
+                                            <td><?= ucwords($value->kota) ?></td>
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
+                                    <th>No</th>
                                         <th>Nama</th>
                                         <th>Username</th>
                                         <th>No. Hp</th>
@@ -67,7 +69,6 @@
                                         <th>Gejala Covid-19</th>
                                         <th>Kondisi Psikologis</th>
                                         <th>Kota</th>
-                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>

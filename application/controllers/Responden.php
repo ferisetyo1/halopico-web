@@ -21,57 +21,16 @@ class Responden extends CI_Controller
 	 */
 	public function index()
 	{
-		$json = @file_get_contents("https://halo-pico.web.app/getjson/User");
 		$this->load->view('header', array(
-			"active"=>0,
-			"title" => "Dashboard"
+			"active" => 1,
+			"title" => "Responden"
 		));
-		$data = array();
+		$json = @file_get_contents("https://halo-pico.web.app/getjson/User");
 		if ($json) {
-			$decode = json_decode($json);
-			foreach ($decode as $val) {
-				if (isset($val->selfReportCovidHasil)) {
-					$data["covid"][$val->selfReportCovidHasil != null ? $val->selfReportCovidHasil : "Belum Test"][] = $val->nama;
-				} else {
-					$data["covid"]["Belum Test"][] = $val->nama;
-				}
-				if (isset($val->pekerjaan)) {
-					$data["pekerjaan"][$val->pekerjaan != null ? $val->pekerjaan : "Tidak Bekerja"][] = $val->nama;
-				} else {
-					$data["pekerjaan"]["Tidak Bekerja"] = $val->nama;
-				}
-				if (isset($val->provinsi)) {
-					$data["provinsi"][$val->provinsi != null ? $val->provinsi : "Tidak Punya"][] = $val->nama;
-				} else {
-					$data["pekerjaan"]["Tidak Bekerja"] = $val->nama;
-				}
-				if (isset($val->kondisiPsikologis)) {
-					$data["kondisi"][$val->kondisiPsikologis != null ? $val->kondisiPsikologis : "Belum Test"][] = $val->nama;
-				} else {
-					$data["kondisi"]["belum Test"] = $val->nama;
-				}
-			}
-			// print_r($data);
-			$this->load->view("home", $data);
-
-			$data["labelCovid"] = json_encode(array_keys($data["covid"]));
-			$data["labelPekerjaan"] = json_encode(array_keys($data["pekerjaan"]));
-			$data["labelProvinsi"] = json_encode(array_keys($data["provinsi"]));
-			$data["labelKondisi"] = json_encode(array_keys($data["kondisi"]));
-			$data["valueCovid"] = json_encode(array_values(array_map(function ($array) {
-				return count($array);
-			}, $data['covid'])));
-			$data["valueKondisi"] = json_encode(array_values(array_map(function ($array) {
-				return count($array);
-			}, $data['kondisi'])));
-			$data["valuePekerjaan"] = json_encode(array_values(array_map(function ($array) {
-				return count($array);
-			}, $data['pekerjaan'])));
-			$data["valueProvinsi"] = json_encode(array_values(array_map(function ($array) {
-				return count($array);
-			}, $data['provinsi'])));
+			$user = json_decode($json);
+			$this->load->view('responden', array("user" => $user));
 			$this->load->view('footer');
-			$this->load->view("home_js", $data);
+			$this->load->view('responden_js');
 		} else {
 			$this->load->view('errors/500');
 			$this->load->view('footer');

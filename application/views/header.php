@@ -66,7 +66,7 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview <?=$active==1?'menu-open':''?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
@@ -76,7 +76,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?=base_url()?>responden" class="nav-link">
+                  <a href="<?=base_url()?>responden" class="nav-link <?=$active==1?'active':''?>">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Responden</p>
                   </a>
