@@ -25,8 +25,8 @@ class Responden extends CI_Controller
 	 */
 	public function index()
 	{
-		$params=$_GET["filter"];
-		$params = $params!=null ? $params : "";
+		$params = isset($_GET["filter"]) ? $_GET["filter"] : "";
+		$params = $params != null ? $params : "";
 		$this->load->view('header', array(
 			"active" => 1,
 			"title" => "Responden"
@@ -45,6 +45,25 @@ class Responden extends CI_Controller
 
 	public function detail($params)
 	{
-		echo $params;
+		$this->load->view('header', array(
+			"active" => 1,
+			"title" => "Responden"
+		));
+		if ($params != null) {
+			$json = @file_get_contents("https://halo-pico.web.app/getDetaiUser/$params");
+			$json2 = @file_get_contents("https://halo-pico.web.app/getjson/Soal");
+			if ($json&&$json2) {
+				$user = json_decode($json);
+				$soal = json_decode($json2);
+				$this->load->view('detail_user', array("user" => $user[0],"soal"=>$soal));
+				$this->load->view('footer');
+			} else {
+				$this->load->view('errors/500');
+				$this->load->view('footer');
+			}
+		} else {
+			$this->load->view('errors/500');
+			$this->load->view('footer');
+		}
 	}
 }
