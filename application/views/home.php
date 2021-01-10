@@ -36,7 +36,7 @@
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="/responden-otg" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="<?=base_url()?>responden?filter=otg" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -50,7 +50,7 @@
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="/responden-odp" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="<?=base_url()?>responden?filter=odp" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -64,7 +64,7 @@
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="/responden-pdp" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="<?=base_url()?>responden?filter=pdp" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
