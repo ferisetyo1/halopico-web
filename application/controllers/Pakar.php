@@ -32,7 +32,7 @@ class Pakar extends CI_Controller
 			"title" => "Pakar"
 		));
 		$json = @file_get_contents("https://halo-pico.web.app/getjson/ListPakar");
-		if ($json) {
+		if ($json&&$json!=='NO SERVERS AVAILABLE') {
 			$pakar = json_decode($json);
 			$this->load->view('listpakar', array("pakar" => $pakar));
 			$this->load->view('footer');

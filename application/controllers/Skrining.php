@@ -33,7 +33,7 @@ class Skrining extends CI_Controller
 		));
 		$json = @file_get_contents("https://halo-pico.web.app/getjson/User");
 		$json2 = @file_get_contents("https://halo-pico.web.app/getjson/HasilSkrinning");
-		if ($json&&$json2) {
+		if ($json&&$json2&&$json!=='NO SERVERS AVAILABLE'&&$json2!=='NO SERVERS AVAILABLE') {
 			$user = json_decode($json);
 			$skrining = json_decode($json2);
 			$this->load->view('skrining', array("user" => $user,"skrining"=>$skrining));
@@ -55,7 +55,7 @@ class Skrining extends CI_Controller
 			$json = @file_get_contents("https://halo-pico.web.app/getDetaiUser/$params2");
 			$json1 = @file_get_contents("https://halo-pico.web.app/getDetaiSkrining/$params");
 			$json2 = @file_get_contents("https://halo-pico.web.app/getjson/Soal");
-			if ($json&&$json1&&$json2&&$json!=='NO SERVERS AVAILABLE') {
+			if ($json&&$json1&&$json2&&$json!=='NO SERVERS AVAILABLE'&&$json1!=='NO SERVERS AVAILABLE'&&$json2!=='NO SERVERS AVAILABLE') {
 				$user = json_decode($json);
 				$skrining = json_decode($json1);
 				$soal = json_decode($json2);

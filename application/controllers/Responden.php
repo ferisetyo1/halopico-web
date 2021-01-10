@@ -32,7 +32,7 @@ class Responden extends CI_Controller
 			"title" => "Responden"
 		));
 		$json = @file_get_contents("https://halo-pico.web.app/getjson/User");
-		if ($json) {
+		if ($json&&$json!=='NO SERVERS AVAILABLE') {
 			$user = json_decode($json);
 			$this->load->view('responden', array("user" => $user));
 			$this->load->view('footer');
@@ -52,7 +52,7 @@ class Responden extends CI_Controller
 		if ($params != null) {
 			$json = @file_get_contents("https://halo-pico.web.app/getDetaiUser/$params");
 			$json2 = @file_get_contents("https://halo-pico.web.app/getjson/Soal");
-			if ($json&&$json2) {
+			if ($json&&$json2&&$json!=='NO SERVERS AVAILABLE'&&$json2!=='NO SERVERS AVAILABLE') {
 				$user = json_decode($json);
 				$soal = json_decode($json2);
 				$this->load->view('detail_user', array("user" => $user[0],"soal"=>$soal));
