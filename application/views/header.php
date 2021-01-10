@@ -49,7 +49,7 @@
             <img src="<?=base_url("public/dist/img/avatar04.png")?>" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href<?=base_url()?>" class="d-block">Admin HaloPICO</a>
+            <a href="<?=base_url()?>" class="d-block">Admin HaloPICO</a>
           </div>
         </div>
 
@@ -76,7 +76,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/responden" class="nav-link">
+                  <a href="<?=base_url()?>responden" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Responden</p>
                   </a>
@@ -86,21 +86,21 @@
 
             <li class="nav-header">LABELS</li>
             <li class="nav-item">
-              <a href="/responden-pdp" class="nav-link">
-                <i class="nav-icon far fa-circle text-danger"></i>
-                <p class="text">PDP</p>
+              <a href="<?=base_url()?>responden/otg" class="nav-link">
+                <i class="nav-icon far fa-circle text-info"></i>
+                <p>OTG</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="/responden-odp" class="nav-link">
+              <a href="<?=base_url()?>responden/odp" class="nav-link">
                 <i class="nav-icon far fa-circle text-warning"></i>
                 <p>ODP</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="/responden-otg" class="nav-link">
-                <i class="nav-icon far fa-circle text-info"></i>
-                <p>OTG</p>
+              <a href="<?=base_url()?>responden/pdp" class="nav-link">
+                <i class="nav-icon far fa-circle text-danger"></i>
+                <p class="text">PDP</p>
               </a>
             </li>
           </ul>
