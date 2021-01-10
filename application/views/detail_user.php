@@ -120,7 +120,8 @@
                 <h5>Record SRQ terakhir</h5>
                 <?php $i = 1;
                 foreach ($user->selfReportQ as $key1 => $value1) { ?>
-                  <?php foreach ($soal as $key2 => $value2) {
+                  <?php foreach ($soal as $key2 => $value2_) {
+                    $value2 = $value2_->data;
                     if ($value1->idSoal === $value2->id) {
                   ?>
                       <div class="form-group">

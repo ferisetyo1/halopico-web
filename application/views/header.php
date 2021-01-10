@@ -66,7 +66,7 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item has-treeview <?=$active==1?'menu-open':''?>">
+            <li class="nav-item has-treeview <?=$active==1?'menu-open':$active==2?'menu-open':$active==3?'menu-open':''?>">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
@@ -79,6 +79,22 @@
                   <a href="<?=base_url()?>responden" class="nav-link <?=$active==1?'active':''?>">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Responden</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?=base_url()?>pakar" class="nav-link <?=$active==2?'active':''?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Pakar</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?=base_url()?>skrining" class="nav-link <?=$active==3?'active':''?>">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Skrining</p>
                   </a>
                 </li>
               </ul>

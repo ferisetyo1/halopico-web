@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Responden extends CI_Controller
+class Pakar extends CI_Controller
 {
 
 	public function __construct()
@@ -28,39 +28,15 @@ class Responden extends CI_Controller
 		$params = isset($_GET["filter"]) ? $_GET["filter"] : "";
 		$params = $params != null ? $params : "";
 		$this->load->view('header', array(
-			"active" => 1,
-			"title" => "Responden"
+			"active" => 2,
+			"title" => "Pakar"
 		));
-		$json = @file_get_contents("https://halo-pico.web.app/getjson/User");
+		$json = @file_get_contents("https://halo-pico.web.app/getjson/ListPakar");
 		if ($json) {
-			$user = json_decode($json);
-			$this->load->view('responden', array("user" => $user));
+			$pakar = json_decode($json);
+			$this->load->view('listpakar', array("pakar" => $pakar));
 			$this->load->view('footer');
 			$this->load->view('data_table_js', array("filter" => $params));
-		} else {
-			$this->load->view('errors/500');
-			$this->load->view('footer');
-		}
-	}
-
-	public function detail($params)
-	{
-		$this->load->view('header', array(
-			"active" => 1,
-			"title" => "Detail Responden"
-		));
-		if ($params != null) {
-			$json = @file_get_contents("https://halo-pico.web.app/getDetaiUser/$params");
-			$json2 = @file_get_contents("https://halo-pico.web.app/getjson/Soal");
-			if ($json&&$json2) {
-				$user = json_decode($json);
-				$soal = json_decode($json2);
-				$this->load->view('detail_user', array("user" => $user[0],"soal"=>$soal));
-				$this->load->view('footer');
-			} else {
-				$this->load->view('errors/500');
-				$this->load->view('footer');
-			}
 		} else {
 			$this->load->view('errors/500');
 			$this->load->view('footer');

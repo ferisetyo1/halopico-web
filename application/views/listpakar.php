@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Data Responden</h1>
+                    <h1>Data Pakar</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?=base_url()?>">Home</a></li>
-                        <li class="breadcrumb-item active">Responden</li>
+                        <li class="breadcrumb-item active">Pakar</li>
                     </ol>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Data pengguna android</h3>
+                            <h3 class="card-title">Data Para Pakar</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -36,27 +36,18 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>Username</th>
-                                        <th>No. Hp</th>
-                                        <th>Pekerjaan</th>
-                                        <th>Gejala Covid-19</th>
-                                        <th>Kondisi Psikologis</th>
-                                        <th>Kota</th>
+                                        <th>No. HP</th>
+                                        <th>Alamat</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i = 1;
-                                    foreach ($user as $key => $value) {
-                                        ?>
+                                    foreach ($pakar as $key => $value) { ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><a href="<?=base_url('responden/detail/').$value->userName?>"><?= ucwords($value->nama) ?></a></td>
-                                            <td><?= $value->userName ?></td>
-                                            <td><?= $value->nohp ?></td>
-                                            <td><?= ucwords($value->pekerjaan) ?></td>
-                                            <td><?= isset($value->selfReportCovidHasil) ? ($value->selfReportCovidHasil != null ? ucwords($value->selfReportCovidHasil) : 'Belum test') : 'Belum test' ?></td>
-                                            <td><?= isset($value->kondisiPsikologis) ? ($value->kondisiPsikologis != null ? ucwords($value->kondisiPsikologis) : 'Belum test') : 'Belum test' ?></td>
-                                            <td><?= ucwords($value->kota) ?></td>
+                                            <td><?= ucwords($value->nama) ?></td>
+                                            <td><?= $value->noHp ?></td>
+                                            <td><?= ucwords($value->tempat) ?></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
@@ -64,12 +55,8 @@
                                     <tr>
                                     <th>No</th>
                                         <th>Nama</th>
-                                        <th>Username</th>
                                         <th>No. Hp</th>
-                                        <th>Pekerjaan</th>
-                                        <th>Gejala Covid-19</th>
-                                        <th>Kondisi Psikologis</th>
-                                        <th>Kota</th>
+                                        <th>Alamat</th>
                                     </tr>
                                 </tfoot>
                             </table>

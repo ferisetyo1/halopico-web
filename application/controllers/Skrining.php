@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Responden extends CI_Controller
+class Skrining extends CI_Controller
 {
 
 	public function __construct()
@@ -28,13 +28,15 @@ class Responden extends CI_Controller
 		$params = isset($_GET["filter"]) ? $_GET["filter"] : "";
 		$params = $params != null ? $params : "";
 		$this->load->view('header', array(
-			"active" => 1,
-			"title" => "Responden"
+			"active" => 3,
+			"title" => "Skrining"
 		));
 		$json = @file_get_contents("https://halo-pico.web.app/getjson/User");
-		if ($json) {
+		$json2 = @file_get_contents("https://halo-pico.web.app/getjson/HasilSkrinning");
+		if ($json&&$json2) {
 			$user = json_decode($json);
-			$this->load->view('responden', array("user" => $user));
+			$skrining = json_decode($json2);
+			$this->load->view('skrining', array("user" => $user,"skrining"=>$skrining));
 			$this->load->view('footer');
 			$this->load->view('data_table_js', array("filter" => $params));
 		} else {
