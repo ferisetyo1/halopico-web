@@ -1,23 +1,22 @@
-<div class="content-wrapper" style="min-height: 1244.06px;">
+<div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Detail Responden</h1>
+          <h1>Data Skrining</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?= base_url() ?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?= base_url('responden') ?>">Responden</a></li>
-            <li class="breadcrumb-item active">Detail Responden</li>
+            <li class="breadcrumb-item"><a href="<?= base_url('skrining') ?>">Skrinning</a></li>
+            <li class="breadcrumb-item active">Detail Skrining</li>
           </ol>
         </div>
       </div>
     </div><!-- /.container-fluid -->
   </section>
 
-  <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
       <div class="row">
@@ -136,6 +135,28 @@
                     }
                   }
                 } ?>
+                <hr>
+                <h5>Record Skrinning [<?= date('d-m-Y H:i:s', @$skrining->tanggal->_seconds) ?>]</h5>
+                <?php $i = 1;
+                foreach (@$skrining->hasilSkrinning as $key0 => $value) { ?>
+                  <strong>Skrining <?= $value->tipe === 1 ? 'GHQ' : $value->tipe === 2 ? 'GAD' : $value->tipe === 3 ? 'PHQ' : '' ?></strong>
+                  <?php foreach ($value->jawabanUser as $key1 => $value1) { ?>
+                    <?php foreach ($soal as $key2 => $value2) {
+                      if ($value1->idSoal === $value2->id) {
+                    ?>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1"><?= ($i++) . ". " . $value2->pertanyaan ?></label>
+                          <?php foreach ($value2->jawaban as $key3 => $value3) { ?>
+                            <div class="form-check" style="margin-left: 12px;">
+                              <input class="form-check-input" type="checkbox" <?= $value1->jawaban == $value3->jawaban ? 'checked' : '' ?>>
+                              <label class="form-check-label"><?= $value3->jawaban ?></label>
+                            </div>
+                          <?php } ?>
+                        </div>
+                <?php }
+                    }
+                  }
+                } ?>
               </div>
             </form>
           </div>
@@ -147,5 +168,4 @@
       <!-- /.row -->
     </div><!-- /.container-fluid -->
   </section>
-  <!-- /.content -->
 </div>

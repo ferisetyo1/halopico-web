@@ -45,19 +45,21 @@ class Skrining extends CI_Controller
 		}
 	}
 
-	public function detail($params)
+	public function detail($params,$params2)
 	{
 		$this->load->view('header', array(
-			"active" => 1,
-			"title" => "Detail Responden"
+			"active" => 3,
+			"title" => "Detail Skrinning"
 		));
-		if ($params != null) {
-			$json = @file_get_contents("https://halo-pico.web.app/getDetaiUser/$params");
+		if ($params != null&&$params2!=null) {
+			$json = @file_get_contents("https://halo-pico.web.app/getDetaiUser/$params2");
+			$json1 = @file_get_contents("https://halo-pico.web.app/getDetaiSkrining/$params");
 			$json2 = @file_get_contents("https://halo-pico.web.app/getjson/Soal");
-			if ($json&&$json2) {
+			if ($json&&$json1&&$json2&&$json!=='NO SERVERS AVAILABLE') {
 				$user = json_decode($json);
+				$skrining = json_decode($json1);
 				$soal = json_decode($json2);
-				$this->load->view('detail_user', array("user" => $user[0],"soal"=>$soal));
+				$this->load->view('detail_skrining', array("user" => $user[0],"skrining"=>$skrining,"soal"=>$soal));
 				$this->load->view('footer');
 			} else {
 				$this->load->view('errors/500');

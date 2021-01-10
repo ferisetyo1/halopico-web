@@ -37,7 +37,7 @@
                                         <th>No</th>
                                         <th>Tanggal</th>
                                         <th>ID</th>
-                                        <th>User ID</th>
+                                        <th>Nama</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
@@ -50,7 +50,7 @@
                                                 <tr>
                                                     <td><?= $i++ ?></td>
                                                     <td><?= date('d-m-Y H:i:s', $value->tanggal->_seconds) ?></td>
-                                                    <td><?= $value->id ?></td>
+                                                    <td><a href="<?=base_url('skrining/detail/').($value->id).'/'.($value1->userName)?>"><?=$value->id?></a></td>
                                                     <td><?= $value1->nama ?></td>
                                                     <td><?= ucwords($value->status) ?></td>
                                                 </tr>
@@ -63,7 +63,7 @@
                                         <th>No</th>
                                         <th>Tanggal</th>
                                         <th>ID</th>
-                                        <th>User ID</th>
+                                        <th>Nama</th>
                                         <th>Status</th>
                                     </tr>
                                 </tfoot>
