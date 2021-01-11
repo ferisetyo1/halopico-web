@@ -41,7 +41,7 @@
                   <input type="text" class="form-control" value="<?= $user->userName ?>" disabled>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Reg. Time</label>
+                  <label for="exampleInputPassword1">Tanggal Registrasi</label>
                   <input type="text" class="form-control" value="<?= date('d-m-Y H:i:s', $user->regTime->_seconds) ?>" disabled>
                 </div>
                 <div class="form-group">
