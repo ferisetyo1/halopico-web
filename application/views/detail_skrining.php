@@ -14,11 +14,15 @@
           </ol>
         </div>
       </div>
+      <div style="text-align: right;">
+        <a href="javascript:window.print()"  class="btn btn-secondary" id="print"><i class="fa fa-print" aria-hidden="true">Print</i></a>
+      </div>
     </div><!-- /.container-fluid -->
   </section>
 
   <section class="content">
     <div class="container-fluid">
+    <h4>Diakses tanggal : <?= date('d-m-Y H:i:s') ?></h4>
       <div class="row">
         <!-- left column -->
         <div class="col-md-12">
