@@ -99,7 +99,7 @@
               <div class="card-body">
 
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Hasil Self Report Covid</label>
+                  <label for="exampleInputPassword1">Gejala Covid-19</label>
                   <input type="text" class="form-control" value="<?= ucwords(@$user->selfReportCovidHasil) ?>" disabled>
                 </div>
                 <div class="form-group">
@@ -107,16 +107,16 @@
                   <input type="text" class="form-control" value="<?= @$user->kondisiPsikologis ?>" disabled>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Hasil test SRQ terakhir</label>
+                  <label for="exampleInputPassword1">Hasil Self Report terakhir</label>
                   <input type="text" class="form-control" value="<?= ucfirst(@$user->selfReportQHasil) ?>" disabled>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Tanggal terakhir test SRQ</label>
+                  <label for="exampleInputPassword1">Tanggal terakhir skrining</label>
                   <input type="text" class="form-control" onclick="disabledCheck()" value="<?= date('d-m-Y H:i:s', @$user->lastSkrinning->_seconds) ?>" disabled>
                 </div>
                 <hr>
                 <?php if (isset($user->selfReportQ)) { ?>
-                  <h5>Record SRQ terakhir</h5>
+                  <h5>Record Self Report terakhir</h5>
                   <?php $i = 1;
                   foreach (@$user->selfReportQ as $key1 => $value1) { ?>
                     <?php foreach ($soal as $key2 => $value2) {

@@ -1,6 +1,7 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="<?= base_url("public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css") ?>">
 <link rel="stylesheet" href="<?= base_url('public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') ?>">
+<link rel="stylesheet" href="<?= base_url('public/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')?>">
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -30,8 +31,9 @@
                             <h3 class="card-title">Data List Soal</h3>
                         </div>
                         <!-- /.card-header -->
+                        <!-- <button class="btn btn-secondary" id="print"><i class="fa fa-print" aria-hidden="true">Print</i></button> -->
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="example1" class="table table-bordered table-striped" data-show-print="true">
                                 <thead>
                                     <tr>
                                         <th>No</th>
