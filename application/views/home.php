@@ -118,6 +118,31 @@
             </div><!-- /.card-body -->
           </div>
           <!-- /.card -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-chart-pie mr-1"></i>
+                Stastik Pakar
+              </h3>
+              <div class="card-tools">
+                <ul class="nav nav-pills ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#chart-prov-pakar" data-toggle="tab">Alamat</a>
+                  </li>
+                </ul>
+              </div>
+            </div><!-- /.card-header -->
+            
+            <div class="card-body">
+              <div class="tab-content p-0">
+                <!-- Morris chart - Sales -->
+                <div class="chart tab-pane active" id="covid-chart" style="position: relative; height: 300px;">
+                  <canvas id="chart-prov-pakar" height="300" style="height: 300px;"></canvas>
+                </div>
+              </div>
+            </div><!-- /.card-body -->
+          </div>
+          <!-- /.card -->
 
           <!-- /.card -->
         </section>

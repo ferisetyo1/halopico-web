@@ -26,20 +26,58 @@ class Pakar extends CI_Controller
 	public function index()
 	{
 		$params = isset($_GET["filter"]) ? $_GET["filter"] : "";
+		$params2 = isset($_GET["status"]) ? $_GET["status"] : "";
 		$params = $params != null ? $params : "";
+		$params2 = $params2 != null ? $params2 : "";
 		$this->load->view('header', array(
 			"active" => 2,
 			"title" => "Pakar"
 		));
 		$json = @file_get_contents("https://halo-pico.web.app/getjson/ListPakar");
-		if ($json&&$json!=='NO SERVERS AVAILABLE') {
+		if ($json && $json !== 'NO SERVERS AVAILABLE') {
 			$pakar = json_decode($json);
-			$this->load->view('listpakar', array("pakar" => $pakar));
+			$this->load->view('listpakar', array("pakar" => $pakar, "status" => $params2));
 			$this->load->view('footer');
 			$this->load->view('data_table_js', array("filter" => $params));
 		} else {
 			$this->load->view('errors/500');
 			$this->load->view('footer');
+		}
+	}
+
+	public function tambah()
+	{
+		$this->load->view('header', array(
+			"active" => 2,
+			"title" => "Tambah Pakar"
+		));
+		$this->load->view('tambah_pakar');
+		$this->load->view('footer');
+	}
+
+	public function prosestambah()
+	{
+		$nama = $this->input->post('nama');
+		$nohp = $this->input->post('nohp');
+		$tempat = $this->input->post('tempat');
+		$json = @file_get_contents("https://halo-pico.web.app/tambahpakar/$nama/$nohp/$tempat");
+		if ($json) {
+			if (json_decode($json) === "sukses")
+				redirect('pakar?status=sukses_insert');
+		} else {
+			redirect('pakar?status=gagal_insert');
+		}
+	}
+	public function delete($id)
+	{
+		if ($id != null) {
+			$json = @file_get_contents("https://halo-pico.web.app/deletepakar/$id");
+			if ($json) {
+				if (json_decode($json) === "sukses")
+					redirect('pakar?status=sukses_delete');
+			} else {
+				redirect('pakar?status=gagal_delete');
+			}
 		}
 	}
 }

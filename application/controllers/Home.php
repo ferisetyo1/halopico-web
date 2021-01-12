@@ -22,13 +22,15 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$json = @file_get_contents("https://halo-pico.web.app/getjson/User");
+		$json2 = @file_get_contents("https://halo-pico.web.app/getjson/ListPakar");
 		$this->load->view('header', array(
 			"active"=>0,
 			"title" => "Dashboard"
 		));
 		$data = array();
-		if ($json) {
+		if ($json&&$json2&&$json!=='NO SERVERS AVAILABLE'&&$json2!=='NO SERVERS AVAILABLE') {
 			$decode = json_decode($json);
+			$decode2 = json_decode($json2);
 			foreach ($decode as $val) {
 				if (isset($val->selfReportCovidHasil)) {
 					$data["covid"][$val->selfReportCovidHasil != null ? $val->selfReportCovidHasil : "Belum Test"][] = $val->nama;
@@ -51,6 +53,13 @@ class Home extends CI_Controller
 					$data["kondisi"]["belum Test"] = $val->nama;
 				}
 			}
+			foreach ($decode2 as $val) {
+				if (isset($val->tempat)) {
+					$data["pakar_prov"][$val->tempat != null ? $val->tempat : "Tidak Punya"][] = $val->nama;
+				} else {
+					$data["pakar_prov"]["Tidak Punya"][] = $val->nama;
+				}
+			}
 			// print_r($data);
 			$this->load->view("home", $data);
 
@@ -58,6 +67,7 @@ class Home extends CI_Controller
 			$data["labelPekerjaan"] = json_encode(array_keys($data["pekerjaan"]));
 			$data["labelProvinsi"] = json_encode(array_keys($data["provinsi"]));
 			$data["labelKondisi"] = json_encode(array_keys($data["kondisi"]));
+			$data["labelPakarProv"] = json_encode(array_keys($data["pakar_prov"]));
 			$data["valueCovid"] = json_encode(array_values(array_map(function ($array) {
 				return count($array);
 			}, $data['covid'])));
@@ -70,6 +80,9 @@ class Home extends CI_Controller
 			$data["valueProvinsi"] = json_encode(array_values(array_map(function ($array) {
 				return count($array);
 			}, $data['provinsi'])));
+			$data["valuePakarProv"] = json_encode(array_values(array_map(function ($array) {
+				return count($array);
+			}, $data['pakar_prov'])));
 			$this->load->view('footer');
 			$this->load->view("home_js", $data);
 		} else {

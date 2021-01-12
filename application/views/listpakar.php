@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?=base_url()?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url() ?>">Home</a></li>
                         <li class="breadcrumb-item active">Pakar</li>
                     </ol>
                 </div>
@@ -31,6 +31,28 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
+                            <div style="text-align: right; color:white"><a href="<?= base_url('pakar/tambah') ?>" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Tambah</a></div>
+                            <br>
+                            <?php if ($status!=="") { ?>
+                                <?php if ($status == "sukses_insert") { ?>
+                                    <div class="alert alert-success">
+                                        <strong>Success!</strong> pakar telah ditambahkan.
+                                    </div>
+                                <?php } else if ($status == "sukses_delete") { ?>
+                                    <div class="alert alert-success">
+                                        <strong>Success!</strong> pakar telah dihapus.
+                                    </div>
+                                <?php } else if ($status == "gagal_delete") { ?>
+                                    <div class="alert alert-danger">
+                                        <strong>Failed!</strong> pakar gagal dihapus.
+                                    </div>
+                                    <?php } else if ($status == "gagal_insert") { ?>
+                                    <div class="alert alert-danger">
+                                        <strong>Failed!</strong> pakar gagal ditambahkan.
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                            <br>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -38,6 +60,7 @@
                                         <th>Nama</th>
                                         <th>No. HP</th>
                                         <th>Alamat</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,15 +71,17 @@
                                             <td><?= ucwords($value->nama) ?></td>
                                             <td><?= $value->noHp ?></td>
                                             <td><?= ucwords($value->tempat) ?></td>
+                                            <td><a href="<?= base_url('pakar/delete/').$value->doc_id ?>" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</a></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                    <th>No</th>
+                                        <th>No</th>
                                         <th>Nama</th>
                                         <th>No. Hp</th>
                                         <th>Alamat</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </tfoot>
                             </table>

@@ -9,11 +9,13 @@
         var labelKondisi = JSON.parse('<?= $labelKondisi ?>');
         var labelPekerjaan = JSON.parse('<?= $labelPekerjaan ?>');
         var labelProvinsi = JSON.parse('<?= $labelProvinsi ?>');
+        var labelPakarProv = JSON.parse('<?= $labelPakarProv ?>');
         var valueCovid = JSON.parse('<?= $valueCovid ?>');
         var valueKondisi = JSON.parse('<?= $valueKondisi ?>');
         var valuePekerjaan = JSON.parse('<?= $valuePekerjaan ?>');
         var valueProvinsi = JSON.parse('<?= $valueProvinsi ?>');
-    
+        var valuePakarProv = JSON.parse('<?= $valuePakarProv ?>');
+
         /* Chart.js Charts */
         // Sales chart
         var covidChartCanvas = document.getElementById('covid-chart-canvas').getContext('2d');
@@ -31,11 +33,14 @@
             var b = Math.floor(Math.random() * 255);
             return "rgb(" + r + "," + g + "," + b + ")";
         };
-
-        for (var i in labelPekerjaan) {
-            color.push(dynamicColors());
-        }
-
+        do {
+            var temp = dynamicColors();
+            console.log(color);
+            console.log(temp);
+            if(-1==color.indexOf(temp)){
+                color.push(temp);
+            }
+        } while (labelProvinsi.length != color.length)
         var pekerjaanChartData = {
             labels: labelPekerjaan,
             datasets: [{
@@ -243,6 +248,47 @@
             type: 'doughnut',
             data: pieData,
             options: pieOptions
+        });
+        var pakarprovChartCanvas = $('#chart-prov-pakar').get(0).getContext('2d')
+        console.log(valuePakarProv)
+        console.log(labelPakarProv)
+        do {
+            var temp = dynamicColors();
+            console.log(color);
+            console.log(temp);
+            if(-1==color.indexOf(temp)){
+                color.push(temp);
+            }
+        } while (labelPakarProv.length >= color.length)
+        var pakarprovData = {
+            labels: labelPakarProv,
+            datasets: [{
+                data: valuePakarProv,
+                backgroundColor: color,
+            }]
+        }
+        var pakarprovOptions = {
+            legend: {
+                display: true
+            },
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                datalabels: {
+                    align: 'center',
+                    formatter: Math.round,
+                    font: {
+                        weight: 'bold'
+                    }
+                }
+            }
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        var pakarprovChart = new Chart(pakarprovChartCanvas, {
+            type: 'doughnut',
+            data: pakarprovData,
+            options: pakarprovOptions
         });
     });
 </script>
