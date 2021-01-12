@@ -38,21 +38,24 @@
                                     <div class="alert alert-success">
                                         <strong>Success!</strong> pakar telah ditambahkan.
                                     </div>
+                                    <br>
                                 <?php } else if ($status == "sukses_delete") { ?>
                                     <div class="alert alert-success">
                                         <strong>Success!</strong> pakar telah dihapus.
                                     </div>
+                                    <br>
                                 <?php } else if ($status == "gagal_delete") { ?>
                                     <div class="alert alert-danger">
                                         <strong>Failed!</strong> pakar gagal dihapus.
                                     </div>
+                                    <br>
                                     <?php } else if ($status == "gagal_insert") { ?>
                                     <div class="alert alert-danger">
                                         <strong>Failed!</strong> pakar gagal ditambahkan.
                                     </div>
+                                    <br>
                                 <?php } ?>
                             <?php } ?>
-                            <br>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
