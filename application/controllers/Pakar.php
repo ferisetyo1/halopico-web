@@ -7,6 +7,9 @@ class Pakar extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if (!isset($_SESSION["login"])) {
+            redirect(base_url('login'));
+        }
 	}
 	/**
 	 * Index Page for this controller.
