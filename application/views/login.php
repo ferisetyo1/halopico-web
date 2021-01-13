@@ -41,7 +41,7 @@
                 <?php } ?>
                 <form action="<?= base_url('login/proses') ?>" method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Email" name="user">
+                        <input type="text" class="form-control" placeholder="Username" name="user">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
