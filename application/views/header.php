@@ -36,7 +36,7 @@
           <i class="fa fa-user" aria-hidden="true"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Ganti Password</a>
+            <a href="<?=base_url('settings/gantipassword')?>" class="dropdown-item"><i class="fa fa-key" aria-hidden="true"></i> Ganti Password</a>
             <div class="dropdown-divider"></div>
             <a href="<?=base_url('logout')?>" class="dropdown-item"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</a>
           </div>
@@ -61,7 +61,7 @@
             <img src="<?= base_url("public/dist/img/avatar04.png") ?>" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="<?= base_url() ?>" class="d-block">Admin HaloPICO</a>
+            <a href="<?= base_url() ?>" class="d-block"><?=$_SESSION['login']?></a>
           </div>
         </div>
 

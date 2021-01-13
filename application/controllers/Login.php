@@ -7,6 +7,7 @@ class Login extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $db = $this->load->database();
     }
     /**
      * Index Page for this controller.
@@ -36,9 +37,14 @@ class Login extends CI_Controller
     {
         $user = $_POST["user"];
         $pw = $_POST["password"];
-        if ($user == "admin" && $pw == "admin") {
-            $_SESSION["login"] = true;
-            redirect(base_url("home"));
+        $result = @$this->db->get_where('user', array('username' => $user))->result();
+        if (count($result)) {
+            if (password_verify($pw, $result[0]->password)) {
+                $_SESSION["login"] = $_POST['user'];
+                redirect(base_url("home"));
+            } else {
+                redirect('login?status=password_salah');
+            }
         } else {
             redirect('login?status=password_salah');
         }

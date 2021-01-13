@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'ub-learningtechnology.com',
 	'username' => 'ublearni_halopicoadmin',
 	'password' => ',y5?CcWXOB!G',
 	'database' => 'ublearni_halopico_adminv1',
