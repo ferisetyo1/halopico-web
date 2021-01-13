@@ -37,7 +37,7 @@ class Settings extends CI_Controller
 			"active" => -1,
 			"title" => "Ganti Password"
 		));
-		$this->load->view('ganti_password', isset($_GET) ? $_GET : array());
+		$this->load->view('ganti_password', isset($_GET['status']) ? $_GET : array("status"=>""));
 		$this->load->view('footer');
 	}
 	public function prosesgantipassword()
